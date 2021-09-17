@@ -30,7 +30,7 @@ class Unique : public atkui::Framework {
                 float angle = 0.1 * j + 0.6 *(i+1)*elapsedTime();
                 float x = center[0]+(radius[i] + 10 * angle) * cos(angle);
                 float y = center[1]+(radius[i] + 10 * angle) * sin(angle);
-               drawSphere(vec3(x,y,0),50);
+               drawSphere(vec3(x,y,0),100);
          }
       }
   }
