@@ -24,7 +24,6 @@ class Eyes : public atkui::Framework
       float reye_x = 50.0f * sin(elapsedTime()) + 6*width_ratio;
       drawSphere(vec3(reye_x,height_ratio,200),smallRadius);
       drawSphere(vec3(leye_x,height_ratio,200),smallRadius);
-
     }
 };
 
