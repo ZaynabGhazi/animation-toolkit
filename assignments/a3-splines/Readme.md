@@ -10,5 +10,6 @@ https://user-images.githubusercontent.com/43979389/135680000-6d4e365b-43f4-4089-
 
 
 * Uses Hemite interpolator to randomize particle movement, and catmull-rom interpolation for color.
+
 https://user-images.githubusercontent.com/43979389/135680009-027c8aa1-b3da-4735-a4dc-50c213dc81a3.mov
 
