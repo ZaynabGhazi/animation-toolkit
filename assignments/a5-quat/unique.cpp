@@ -25,7 +25,7 @@ public:
    virtual void setup()
    {
       rotation_axis = vec3(1,0,0);
-      color = pallet[0];
+      color = vec3(1,0,0);
       size = 200;
       angle = 0.0f;
       rate = (3.0f * M_PI) / 10.0f;
@@ -37,7 +37,7 @@ public:
    {
       if (angle >=  (9.0f * M_PI) / 10.0f ){
          angle =0.0f;
-         color = pallet.operator[](drand48()*pallet.size());
+         color = vec3(drand48(),drand48(),drand48());
          size = drand48()* 300+50;
          rotation_axis = vec3(drand48(),drand48(),drand48());
       }
@@ -57,15 +57,7 @@ private:
    vec3 color;
    int size;
    float X, Y;
-   //https://www.color-hex.com/color-palette/82379
-   std::vector<vec3> pallet =
-       {
-           vec3(0, 165, 227) / 255.0f,
-           vec3(141, 215, 191) / 255.0f,
-           vec3(255, 150, 197) / 255.0f,
-           vec3(255, 87, 104) / 255.0f,
-           vec3(255, 162, 58) / 255.0f};
-};
+}
 ;
 
 int main(int argc, char **argv)
