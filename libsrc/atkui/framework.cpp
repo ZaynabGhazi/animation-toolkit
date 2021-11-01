@@ -24,7 +24,7 @@ Framework::Framework(Display type, int screenWidth, int screenHeight) : agl::Win
     setCameraEnabled(true);
     camera.setMoveSpeed(5);
 
-    renderer.loadShader("floor", "../shaders/floor.vs", "../shaders/floor.fs");
+   renderer.loadShader("floor", "../shaders/floor.vs", "../shaders/floor.fs");
   }
 }
 
