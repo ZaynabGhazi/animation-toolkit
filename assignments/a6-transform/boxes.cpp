@@ -22,6 +22,8 @@ public:
       vec3 d10 = vec3(-2, 0, 1);
       quat R10 = glm::angleAxis(0.f, vec3(1, 0, 0));
       Transform F10(R10, d10); // transform from frame 1 to world
+      if (!once)
+         std::cout << "F10 is " << F10.matrix() << std::endl;
       setColor(vec3(0, 0.5, 0));
       drawBox(F10);
 
@@ -29,6 +31,8 @@ public:
       vec3 d20 = vec3(4, 0, 2);
       quat R20 = glm::angleAxis((const float)M_PI_4, vec3(0, 0, 1));
       Transform F20(R20, d20); // transform from frame 2 to world
+      if (!once)
+         std::cout << "F20 is " << F20.matrix() << std::endl;
       setColor(vec3(0.5, 0, 0.5));
       drawBox(F20);
 
@@ -36,17 +40,30 @@ public:
       vec3 d30 = vec3(5, 4, 2);
       quat R30 = glm::angleAxis((const float)M_PI_2, vec3(0, 0, 1));
       Transform F30(R30, d30); // transform from frame 3 to world
+      if (!once)
+         std::cout << "F30 is " << F30.matrix() << std::endl;
       setColor(vec3(0.0, 0.5, 0.5));
       drawBox(F30);
 
       // Question 2
-      Transform F21 = F20 * F10.inverse(); // transform from frame 2 to frame 1
+      Transform F21 = F10.inverse() * F20; // transform from frame 2 to frame 1
+      if (!once)
+      {
+         std::cout << "F21 is " << F21.matrix() << std::endl;
+         std::cout << "F10 INVERSE is " << F10.inverse().matrix() << std::endl;
+      }
       vec3 value = F21.transformPoint(vec3(0));
       if (!once)
          std::cout << "Position of b2 relative to b1 is " << value << std::endl;
 
       // Question 3
-      Transform F32 = F30 * F20.inverse(); // transform from frame 3 to frame 2
+      Transform F32 = F20.inverse() * F30; // transform from frame 3 to frame 2
+      if (!once)
+      {
+         std::cout << "32 is " << F32.matrix() << std::endl;
+         std::cout << "F20 INVERSE is " << F20.inverse().matrix() << std::endl;
+      }
+
       value = F32.transformPoint(vec3(0));
       if (!once)
          std::cout << "Position of b3 relative to b2 is " << value << std::endl;
@@ -57,9 +74,9 @@ public:
       //2-move up by 2
       //3-align with frame 1's origin
       Transform transform(glm::angleAxis(0.f, vec3(1, 0, 0)), vec3(0, 2, 0));
-		Transform F = F10 * transform * F20.inverse();
-		setColor(vec3(0.5, 0.5, 0.5));
-		drawBox(F * F20);
+      Transform F = F10 * transform * F20.inverse();
+      setColor(vec3(0.5, 0.5, 0.5));
+      drawBox(F * F20);
 
       once = true;
    }
