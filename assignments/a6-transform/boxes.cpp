@@ -75,6 +75,9 @@ public:
       //3-align with frame 1's origin
       Transform transform(glm::angleAxis(0.f, vec3(1, 0, 0)), vec3(0, 2, 0));
       Transform F = F10 * transform * F20.inverse();
+      Transform middle = F * F20;
+      if (!once)
+         std::cout << "Position of moving up is  " << middle.matrix()<< std::endl;
       setColor(vec3(0.5, 0.5, 0.5));
       drawBox(F * F20);
 
