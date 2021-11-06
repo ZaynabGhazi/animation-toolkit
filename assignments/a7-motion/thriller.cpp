@@ -22,10 +22,10 @@ public:
       //create 12 devils
       for (int i = 0; i < 12; i++)
       {
-         int offset = (i%3)*100;
-         vec3 position = vec3(0+offset,0,0+i*70+offset);
+         int offset = (i%3)*200;
+         vec3 position = vec3(i*100+offset,0,offset);
          vec3 color = vec3(drand48(),drand48(),drand48());
-         float size = drand48()*1.3;
+         float size = 0.7+drand48()*0.6;
          _devil = Devil(position, color, size);
          _devils[i] = _devil;
       }

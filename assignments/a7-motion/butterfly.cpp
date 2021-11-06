@@ -58,11 +58,11 @@ public:
          push();
          transform(B);
          setColor(vec3(1, 0, 0));
-         drawEllipsoid(vec3(0), vec3(300, 0, 0), 4);
+         drawEllipsoid(vec3(0), vec3(1000, 0, 0), 4);
          setColor(vec3(0, 1, 0));
-         drawEllipsoid(vec3(0), vec3(0, 300, 0), 4);
+         drawEllipsoid(vec3(0), vec3(0, 1000, 0), 4);
          setColor(vec3(0, 0, 1));
-         drawEllipsoid(vec3(0), vec3(0, 0, 300), 4);
+         drawEllipsoid(vec3(0), vec3(0, 0, 1000), 4);
          pop();
       }
 
