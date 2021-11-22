@@ -37,7 +37,32 @@ public:
     int start1 = motion1_.getNumKeys() - numBlendFrames;
     int start2 = 0;
 
-    // TODO: Your code here
+    //fix speed
+    blend_.setFramerate(motion1_.getFramerate());    
+     for(int i=0; i < start1;i++){
+      blend_.appendKey(motion1_.getKey(i));
+    }  
+
+    //Blend
+    for(int i=0; i < numBlendFrames; i++){
+      Pose pose_1 = motion1_.getKey(start1+i);
+      Pose pose_2 = motion2_.getKey(start2+i);
+      Pose blended = Pose::Lerp(pose_1,pose_2,(float)i/(numBlendFrames-1));
+      blend_.appendKey(blended);
+    }
+    for(int i=numBlendFrames; i < motion2_.getNumKeys();i++){
+      blend_.appendKey(motion2_.getKey(i));
+    }
+    
+  }
+
+  void append_motions(){
+    for(int i=0; i < motion1_.getNumKeys();i++){
+      blend_.appendKey(motion1_.getKey(i));
+    }  
+    for(int i=0; i < motion2_.getNumKeys();i++){
+      blend_.appendKey(motion2_.getKey(i));
+    }
   }
 
   void save(const std::string &filename)
