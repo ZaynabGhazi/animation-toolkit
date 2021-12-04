@@ -38,7 +38,7 @@ public:
 
       IKController ik;
       // TODO: Your code here
-      _skeleton.getRoot()->setLocalTranslation(hip_pos + vec3(15.0f * sin(5.0f * elapsedTime())));
+      _skeleton.getRoot()->setLocalTranslation(hip_pos + vec3(15.0f * sin(5.0f * elapsedTime()),15.0f * sin(5.0f * elapsedTime()),0));
       _skeleton.fk();
       ik.solveIKAnalytic(_skeleton, _skeleton.getByName("Beta:LeftFoot")->getID(), lfoot_trans, 0.001f);
       ik.solveIKAnalytic(_skeleton, _skeleton.getByName("Beta:RightFoot")->getID(), rfoot_trans, 0.001f);
