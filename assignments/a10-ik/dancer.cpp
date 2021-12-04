@@ -38,15 +38,15 @@ public:
 
       IKController ik;
       // TODO: Your code here
-      _skeleton.getRoot()->setLocalTranslation(hip_pos + vec3(9.0f * sin(5.0f * elapsedTime())));
+      _skeleton.getRoot()->setLocalTranslation(hip_pos + vec3(15.0f * sin(5.0f * elapsedTime())));
       _skeleton.fk();
       ik.solveIKAnalytic(_skeleton, _skeleton.getByName("Beta:LeftFoot")->getID(), lfoot_trans, 0.001f);
       ik.solveIKAnalytic(_skeleton, _skeleton.getByName("Beta:RightFoot")->getID(), rfoot_trans, 0.001f);
       _skeleton.getByName("Beta:LeftFoot")->setLocalRotation(_skeleton.getByName("Beta:LeftFoot")->getLocalRotation() * inverse(_skeleton.getByName("Beta:LeftFoot")->getGlobalRotation()) * lfoot_rot);
       _skeleton.getByName("Beta:RightFoot")->setLocalRotation(_skeleton.getByName("Beta:RightFoot")->getLocalRotation() * inverse(_skeleton.getByName("Beta:RightFoot")->getGlobalRotation()) * rfoot_rot);
-      _skeleton.fk();
       ik.solveIKAnalytic(_skeleton, _skeleton.getByName("Beta:LeftHand")->getID(), _lhandTarget, 0.001f);
       ik.solveIKAnalytic(_skeleton, _skeleton.getByName("Beta:RightHand")->getID(), _rhandTarget, 0.001f);
+      _skeleton.fk();
    }
 
    void scene()
