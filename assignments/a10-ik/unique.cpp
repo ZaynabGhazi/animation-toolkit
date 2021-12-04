@@ -59,7 +59,6 @@ public:
       vec3 globalForward = _head->getGlobalRotation() * vec3(0, 0, 1);
 
       setColor(vec3(0, 0, 1));
-      drawLine(globalHeadPos, globalHeadPos + 200.0f * globalForward);
       setColor(vec3(1,0,0));
       drawTorus(_target,10);
    }
