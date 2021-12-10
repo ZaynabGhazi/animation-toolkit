@@ -21,7 +21,7 @@ void ASteerable::senseControlAct(const vec3 &veld, float dt)
    _thetad = atan2(veld.x, veld.z);
    // compute _force and _torque
    _force = _mass * kVelKv * (_vd - _state[VEL]);
-   _torque = _inertia * (kOriKp * (_thetad - _state[1]) - kOriKv * _state[AVEL]);
+   _torque = _inertia * (kOriKp * (fmod(_thetad - _state[1] + pi<float>(), 2 * pi<float>()) - pi<float>()) - kOriKv * _state[AVEL]);
    // find derivative
    _derivative[POS] = _state[VEL];
    _derivative[ORI] = _state[AVEL];
