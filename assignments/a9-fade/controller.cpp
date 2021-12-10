@@ -18,9 +18,12 @@ public:
     BVHReader reader;
     reader.load("../motions/Beta/walking.bvh", _skeleton, _walk);
     _drawer.showAxes = true;
+    globalPos = _skeleton.getByName("Beta:Head")->getGlobalTranslation();
+    globalLookPos = _skeleton.getByName("Beta:Spine1")->getGlobalTranslation();
+
     desired_speed = 0.67;
     position = vec3(0);
-  }
+  } 
 
   virtual void scene()
   {
@@ -47,7 +50,7 @@ public:
 
     Pose current = _skeleton.getPose();
     current.rootPos = position + vec3(0,current.rootPos[1],0);
-    current.jointRots[0] = glm::angleAxis(_heading, vec3(0, 1, 0));
+    current.jointRots[0] *= glm::angleAxis(_heading, vec3(0, 1, 0));
     _skeleton.setPose(current);
 
     // TODO: Override the default camera to follow the character
