@@ -144,7 +144,12 @@ AWander::AWander() : ABehavior("Wander")
 vec3 AWander::calculateDesiredVelocity(const ASteerable &actor,
                                        const AWorld &world, const vec3 &target)
 {
-   return vec3(0, 0, 0);
+   float r1 = 200;
+   float r2 = 50;
+   vec3 c = 0.5f * (target - actor.getPosition());
+   vec3 jitter_velocity = vec3(r2*drand48(),0,r2*drand48());
+   vec3 vj = r1 * (normalize(jitter_velocity));
+   return vj + getParam("MaxSpeed") * (target - actor.getPosition()) / (length((target- actor.getPosition())));
 }
 
 //--------------------------------------------------------------
